@@ -1,15 +1,17 @@
 import { describe, it, expect } from "vitest"
 import { GameOfLife } from "./GameOfLife.js"
+import { Board } from "./Board.js"
 
 describe("Game of Life", () => {
   it("displays the grid", () => {
-    const gameOfLife = new GameOfLife([
+    const board = new Board([
       ["x", "x", "x", "x", "x"],
       ["x", "x", "x", "x", "x"],
       ["x", "x", "x", "x", "x"],
       ["x", "x", "x", "x", "x"],
       ["x", "x", "x", "x", "x"],
     ])
+    const gameOfLife = new GameOfLife(board)
 
     expect(gameOfLife.display()).toEqual(
       [
@@ -25,13 +27,15 @@ describe("Game of Life", () => {
   })
 
   it("can be instantiated with a living cell", () => {
-    const gameOfLife = new GameOfLife([
+    const board = new Board([
       ["O", "x", "x", "x", "x"],
       ["x", "x", "x", "x", "x"],
       ["x", "x", "x", "x", "x"],
       ["x", "x", "x", "x", "x"],
       ["x", "x", "x", "x", "x"],
     ])
+
+    const gameOfLife = new GameOfLife(board)
 
     expect(gameOfLife.display()).toEqual(
       [
@@ -47,13 +51,15 @@ describe("Game of Life", () => {
   })
 
   it("kills any living cell with less than 2 neighbours", () => {
-    const gameOfLife = new GameOfLife([
+    const board = new Board([
       ["O", "x", "x", "x", "x"],
       ["x", "x", "x", "x", "x"],
       ["x", "x", "x", "x", "x"],
       ["x", "x", "x", "x", "x"],
       ["x", "x", "x", "x", "x"],
     ])
+
+    const gameOfLife = new GameOfLife(board)
 
     gameOfLife.run()
 
@@ -70,13 +76,15 @@ describe("Game of Life", () => {
     )
   })
   it("only kills any living cell if condition is met", () => {
-    const gameOfLife = new GameOfLife([
+    const board = new Board([
       ["O", "x", "x", "O", "O"],
       ["x", "x", "x", "x", "O"],
       ["x", "x", "x", "x", "x"],
       ["x", "x", "x", "x", "x"],
       ["x", "x", "x", "x", "x"],
     ])
+
+    const gameOfLife = new GameOfLife(board)
 
     gameOfLife.run()
 
