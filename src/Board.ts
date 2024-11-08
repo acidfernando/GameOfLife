@@ -1,8 +1,20 @@
+import { Cell } from "./Cell.js"
+
 export class Board {
-  constructor(private readonly board: string[][]) {}
+  private readonly board: Cell[][]
+
+  constructor(initialBoard: string[][]) {
+    this.board = initialBoard.map((row: string[]) => {
+      return row.map((cell: string) => {
+        return cell === "x" ? Cell.dead() : Cell.alive()
+      })
+    })
+  }
 
   display() {
-    return this.board.map((row) => row.join(" ")).join("\n")
+    return this.board
+      .map((row) => row.map((cell) => cell.display()).join(" "))
+      .join("\n")
   }
 
   runIteration() {
@@ -14,18 +26,18 @@ export class Board {
     }
   }
 
-  private getNextCellStatus(row: number, column: number) {
-    const cellStatus = this.board[row][column]
+  private getNextCellStatus(row: number, column: number): Cell {
+    const cell = this.board[row][column]
 
-    if (cellStatus === "O") {
+    if (cell.isAlive()) {
       const liveNeighbours = this.getLiveNeighbours(row, column)
 
       if (liveNeighbours < 2) {
-        return "x"
+        return Cell.dead()
       }
     }
 
-    return cellStatus
+    return cell
   }
 
   private getLiveNeighbours(row: number, column: number) {
@@ -35,7 +47,7 @@ export class Board {
       for (let j = column - 1; j <= column + 1; j++) {
         if (i === row && j === column) continue
 
-        if (this.board[i]?.[j] === "O") {
+        if (this.board[i]?.[j]?.isAlive()) {
           liveNeighbours++
         }
       }
