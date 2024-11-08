@@ -35,6 +35,9 @@ export class Board {
       if (liveNeighbours < 2) {
         return Cell.dead()
       }
+      if(liveNeighbours>3){
+        return Cell.dead()
+      }
     }
 
     return cell
