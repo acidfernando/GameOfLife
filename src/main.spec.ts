@@ -1,10 +1,20 @@
 import { describe, it, expect } from "vitest"
-import { myFunction } from "./main.js"
+import { GameOfLife } from "./GameOfLife.js"
 
-describe("Default test", () => {
-  it("should work", () => {
-    const result = myFunction()
+describe("Game of Life", () => {
+  it("displays the grid", () => {
+    const gameOfLife = new GameOfLife()
 
-    expect(result).toBe(true)
+    expect(gameOfLife.display()).toEqual(
+      [
+        ["x", "x", "x", "x", "x"],
+        ["x", "x", "x", "x", "x"],
+        ["x", "x", "x", "x", "x"],
+        ["x", "x", "x", "x", "x"],
+        ["x", "x", "x", "x", "x"],
+      ]
+        .map((row) => row.join(" "))
+        .join("\n"),
+    )
   })
 })
