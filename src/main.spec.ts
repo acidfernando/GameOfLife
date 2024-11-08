@@ -104,9 +104,9 @@ describe("Game of Life", () => {
 
   it("kills any cell with more than 3 neighbours", () => {
     const board = new Board([
-      ["O", "O", "x", "x", "x"],
-      ["O", "O", "x", "x", "x"],
-      ["x", "x", "x", "x", "x"],
+      ["x", "x", "O", "x", "x"],
+      ["x", "O", "O", "O", "x"],
+      ["x", "x", "O", "x", "x"],
       ["x", "x", "x", "x", "x"],
       ["x", "x", "x", "x", "x"],
     ])
@@ -117,9 +117,9 @@ describe("Game of Life", () => {
 
     expect(gameOfLife.display()).toEqual(
       [
-        ["x", "O", "x", "x", "x"],
-        ["O", "O", "x", "x", "x"],
-        ["x", "x", "x", "x", "x"],
+        ["x", "x", "O", "x", "x"],
+        ["x", "O", "x", "O", "x"],
+        ["x", "x", "O", "x", "x"],
         ["x", "x", "x", "x", "x"],
         ["x", "x", "x", "x", "x"],
       ]
