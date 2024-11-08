@@ -17,4 +17,28 @@ describe("Game of Life", () => {
         .join("\n"),
     )
   })
+
+  it("can be instantiated with a living cell",()=>{
+    const gameOfLife = new GameOfLife(
+      [
+        ["O", "x", "x", "x", "x"],
+        ["x", "x", "x", "x", "x"],
+        ["x", "x", "x", "x", "x"],
+        ["x", "x", "x", "x", "x"],
+        ["x", "x", "x", "x", "x"],
+      ]
+    )
+
+    expect(gameOfLife.display()).toEqual(
+      [
+        ["O", "x", "x", "x", "x"],
+        ["x", "x", "x", "x", "x"],
+        ["x", "x", "x", "x", "x"],
+        ["x", "x", "x", "x", "x"],
+        ["x", "x", "x", "x", "x"],
+      ]
+        .map((row) => row.join(" "))
+        .join("\n"),
+    )
+  })
 })

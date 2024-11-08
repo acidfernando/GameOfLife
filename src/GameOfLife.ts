@@ -1,5 +1,17 @@
 export class GameOfLife {
+  constructor(param: string[][]) {
+
+  }
+
   display() {
-    throw new Error('Not implemented')
+    return [
+      ["x", "x", "x", "x", "x"],
+      ["x", "x", "x", "x", "x"],
+      ["x", "x", "x", "x", "x"],
+      ["x", "x", "x", "x", "x"],
+      ["x", "x", "x", "x", "x"],
+    ]
+      .map((row) => row.join(" "))
+      .join("\n")
   }
 }
