@@ -75,6 +75,7 @@ describe("Game of Life", () => {
         .join("\n"),
     )
   })
+
   it("only kills any living cell if condition is met", () => {
     const board = new Board([
       ["O", "x", "x", "O", "O"],
@@ -92,6 +93,32 @@ describe("Game of Life", () => {
       [
         ["x", "x", "x", "O", "O"],
         ["x", "x", "x", "x", "O"],
+        ["x", "x", "x", "x", "x"],
+        ["x", "x", "x", "x", "x"],
+        ["x", "x", "x", "x", "x"],
+      ]
+        .map((row) => row.join(" "))
+        .join("\n"),
+    )
+  })
+
+  it("kills any cell with more than 3 neighbours", () => {
+    const board = new Board([
+      ["O", "O", "x", "x", "x"],
+      ["O", "O", "x", "x", "x"],
+      ["x", "x", "x", "x", "x"],
+      ["x", "x", "x", "x", "x"],
+      ["x", "x", "x", "x", "x"],
+    ])
+
+    const gameOfLife = new GameOfLife(board)
+
+    gameOfLife.run()
+
+    expect(gameOfLife.display()).toEqual(
+      [
+        ["x", "O", "x", "x", "x"],
+        ["O", "O", "x", "x", "x"],
         ["x", "x", "x", "x", "x"],
         ["x", "x", "x", "x", "x"],
         ["x", "x", "x", "x", "x"],
