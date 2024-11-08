@@ -3,7 +3,13 @@ import { GameOfLife } from "./GameOfLife.js"
 
 describe("Game of Life", () => {
   it("displays the grid", () => {
-    const gameOfLife = new GameOfLife()
+    const gameOfLife = new GameOfLife([
+      ["x", "x", "x", "x", "x"],
+      ["x", "x", "x", "x", "x"],
+      ["x", "x", "x", "x", "x"],
+      ["x", "x", "x", "x", "x"],
+      ["x", "x", "x", "x", "x"],
+    ])
 
     expect(gameOfLife.display()).toEqual(
       [
@@ -18,16 +24,14 @@ describe("Game of Life", () => {
     )
   })
 
-  it("can be instantiated with a living cell",()=>{
-    const gameOfLife = new GameOfLife(
-      [
-        ["O", "x", "x", "x", "x"],
-        ["x", "x", "x", "x", "x"],
-        ["x", "x", "x", "x", "x"],
-        ["x", "x", "x", "x", "x"],
-        ["x", "x", "x", "x", "x"],
-      ]
-    )
+  it("can be instantiated with a living cell", () => {
+    const gameOfLife = new GameOfLife([
+      ["O", "x", "x", "x", "x"],
+      ["x", "x", "x", "x", "x"],
+      ["x", "x", "x", "x", "x"],
+      ["x", "x", "x", "x", "x"],
+      ["x", "x", "x", "x", "x"],
+    ])
 
     expect(gameOfLife.display()).toEqual(
       [
