@@ -6,6 +6,21 @@ export class GameOfLife {
   }
 
   run(iterations = 1) {
-    throw new Error("Not implemented")
+    for(let i = 0; i<iterations; i++) {
+      this.runIteration()
+    }
+  }
+
+  private runIteration() {
+    let newBoard = this.board;
+    for(let i = 0; i<this.board.length; i++) {
+      for(let j = 0; j<this.board[i].length; j++) {
+        newBoard[i][j] = this.getNextCellStatus()
+      }
+    }
+  }
+
+  private getNextCellStatus() {
+    return "x"
   }
 }

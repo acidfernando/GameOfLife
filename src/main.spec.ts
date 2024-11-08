@@ -69,4 +69,27 @@ describe("Game of Life", () => {
         .join("\n"),
     )
   })
+  it("only kills any living cell if condition is met", () => {
+    const gameOfLife = new GameOfLife([
+      ["O", "x", "x", "O", "O"],
+      ["x", "x", "x", "x", "O"],
+      ["x", "x", "x", "x", "x"],
+      ["x", "x", "x", "x", "x"],
+      ["x", "x", "x", "x", "x"],
+    ])
+
+    gameOfLife.run()
+
+    expect(gameOfLife.display()).toEqual(
+      [
+        ["x", "x", "x", "O", "O"],
+        ["x", "x", "x", "x", "O"],
+        ["x", "x", "x", "x", "x"],
+        ["x", "x", "x", "x", "x"],
+        ["x", "x", "x", "x", "x"],
+      ]
+        .map((row) => row.join(" "))
+        .join("\n"),
+    )
+  })
 })
