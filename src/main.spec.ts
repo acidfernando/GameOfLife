@@ -45,4 +45,28 @@ describe("Game of Life", () => {
         .join("\n"),
     )
   })
+
+  it("kills any living cell with less than 2 neighbours", () => {
+    const gameOfLife = new GameOfLife([
+      ["O", "x", "x", "x", "x"],
+      ["x", "x", "x", "x", "x"],
+      ["x", "x", "x", "x", "x"],
+      ["x", "x", "x", "x", "x"],
+      ["x", "x", "x", "x", "x"],
+    ])
+
+    gameOfLife.run()
+
+    expect(gameOfLife.display()).toEqual(
+      [
+        ["x", "x", "x", "x", "x"],
+        ["x", "x", "x", "x", "x"],
+        ["x", "x", "x", "x", "x"],
+        ["x", "x", "x", "x", "x"],
+        ["x", "x", "x", "x", "x"],
+      ]
+        .map((row) => row.join(" "))
+        .join("\n"),
+    )
+  })
 })
